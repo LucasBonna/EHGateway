@@ -13,10 +13,10 @@ spring:
     gateway:
       mvc:
         routes:
-          - id: teste
-            uri: http://localhost:8001/
+          - id: crawler
+            uri: http://crawler-api:8001/
             predicates:
-              - Path=/teste
+              - Path=/crawler
             filters:
               - SetPath=/api-docs
 
