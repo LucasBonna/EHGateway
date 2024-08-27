@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_DB=mydatabase"
+      - "POSTGRES_PASSWORD=secret"
+      - "POSTGRES_USER=myuser"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ecomhub_network
+
+  gateway-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - ~/.m1:/root/.m1
+    networks:
+      - ecomhub_network
+
+volumes:
+  postgres_data:
+
+networks:
+  ecomhub_network:
+    name: ecomhub_services_network

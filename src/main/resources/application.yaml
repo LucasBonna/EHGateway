@@ -1,5 +1,6 @@
 server:
   port: 8000
+  address: 0.0.0.0
 
 springdoc:
   api-docs:
@@ -18,6 +19,7 @@ spring:
               - Path=/teste
             filters:
               - SetPath=/api-docs
+
   docker:
     compose:
       enabled: false
