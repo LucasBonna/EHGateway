@@ -9,6 +9,12 @@ springdoc:
     path: /swagger
 
 spring:
+  doc:
+    services:
+      - name: gateway-api
+        url: http://gateway-api:8000/api-docs
+      - name: crawler-api
+        url: http://crawler-api:8001/api-docs
   cloud:
     gateway:
       mvc:
@@ -23,3 +29,10 @@ spring:
   docker:
     compose:
       enabled: false
+
+documentation:
+  services:
+    - name: gateway-api
+      url: http://gateway-api:8000/api-docs
+    - name: crawler-api
+      url: http://crawler-api:8001/api-docs
