@@ -24,7 +24,7 @@ public class DefaultController {
         return ResponseEntity.ok(status);
     }
 
-    @GetMapping("/docs")
+    @GetMapping("/redoc")
     @Hidden
     public String redocHtml() {
         return """
