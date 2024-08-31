@@ -1,6 +1,13 @@
 FROM maven:3.9.6-eclipse-temurin-22-jammy
+
 WORKDIR /app
+
+# Copy the pom.xml and install dependencies
 COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copy the source code
 COPY src ./src
-RUN mvn clean package
-CMD ["java", "-jar", "/app/target/gateway-0.0.1-SNAPSHOT.jar"]
+
+# Command to run the application with hot reload
+CMD ["mvn", "spring-boot:run"]
