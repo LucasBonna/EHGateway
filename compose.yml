@@ -1,6 +1,19 @@
 version: "3.8"
 
 services:
+  postgres:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_DB=mydatabase"
+      - "POSTGRES_PASSWORD=secret"
+      - "POSTGRES_USER=myuser"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ecomhub_network
+
   gateway-api:
     build:
       context: .
@@ -8,6 +21,8 @@ services:
     platform: linux/amd64
     ports:
       - "5500:5500"
+    depends_on:
+      - postgres
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase
       - SPRING_DATASOURCE_USERNAME=myuser
