@@ -1,16 +1,13 @@
-FROM eclipse-temurin:22-jdk-jammy
-
-# Install Maven
-RUN apt-get update && apt-get install -y maven
+FROM maven:3.9.6-eclipse-temurin-22-jammy
 
 WORKDIR /app
 
-# Copia o pom.xml e instala as dependências
+# Copy the pom.xml and install dependencies
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
-# Copia o código-fonte
+# Copy the source code
 COPY src ./src
 
-# Comando para executar a aplicação com hot reload
+# Command to run the application with hot reload
 CMD ["mvn", "spring-boot:run"]
