@@ -3,4 +3,4 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package
-CMD ["java", "-jar", "target/gateway-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/target/gateway-0.0.1-SNAPSHOT.jar"]
