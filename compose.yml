@@ -20,7 +20,7 @@ services:
       dockerfile: Dockerfile
     platform: linux/amd64
     ports:
-      - "5000:5000"
+      - "5500:5500"
     depends_on:
       - postgres
     environment:

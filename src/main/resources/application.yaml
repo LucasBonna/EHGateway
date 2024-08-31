@@ -1,5 +1,5 @@
 server:
-  port: 5000
+  port: 5500
   address: 0.0.0.0
 
 springdoc:
@@ -7,15 +7,9 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /docs
-    url: http://localhost:8000/merged-docs
+    url: /merged-docs
 
 spring:
-  doc:
-    services:
-      - name: gateway-api
-        url: http://gateway-api:5000/api-docs
-      - name: crawler-api
-        url: http://crawler-api:8001/api-docs
   cloud:
     gateway:
       mvc:
@@ -42,7 +36,7 @@ spring:
 documentation:
   services:
     - name: gateway-api
-      url: http://localhost:5000/api-docs
+      url: http://localhost:5500/api-docs
     - name: crawler-api
       url: http://crawler-api:8001/api-docs
 
