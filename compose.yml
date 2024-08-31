@@ -20,9 +20,15 @@ services:
       dockerfile: Dockerfile
     platform: linux/amd64
     ports:
-      - "8000:8000"
+      - "5000:5000"
     depends_on:
       - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase
+      - SPRING_DATASOURCE_USERNAME=myuser
+      - SPRING_DATASOURCE_PASSWORD=secret
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
     volumes:
       - .:/app
       - ~/.m1:/root/.m1

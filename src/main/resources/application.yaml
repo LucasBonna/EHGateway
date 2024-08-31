@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 5000
   address: 0.0.0.0
 
 springdoc:
@@ -13,7 +13,7 @@ spring:
   doc:
     services:
       - name: gateway-api
-        url: http://gateway-api:8000/api-docs
+        url: http://gateway-api:5000/api-docs
       - name: crawler-api
         url: http://crawler-api:8001/api-docs
   cloud:
@@ -30,10 +30,25 @@ spring:
   docker:
     compose:
       enabled: false
+  datasource:
+    url: jdbc:postgresql://postgres:5432/mydatabase
+    username: myuser
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 documentation:
   services:
     - name: gateway-api
-      url: http://localhost:8000/api-docs
+      url: http://localhost:5000/api-docs
     - name: crawler-api
       url: http://crawler-api:8001/api-docs
+
+logging:
+  level:
+    root: info
+    br.com.ecomhub.gateway: trace
+    org.hibernate.sql: debug
+    org.hibernate.type: trace
