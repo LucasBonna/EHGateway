@@ -10,4 +10,4 @@ RUN mvn dependency:go-offline
 COPY src ./src
 
 # Command to run the application with hot reload
-CMD ["mvn", "spring-boot:run"]
+CMD ["mvn", "org.springframework.boot:spring-boot-maven-plugin:run"]
