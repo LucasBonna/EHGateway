@@ -8,8 +8,6 @@ services:
     platform: linux/amd64
     ports:
       - "5500:5500"
-    depends_on:
-      - postgres
     volumes:
       - .:/app
       - ~/.m2:/root/.m2
