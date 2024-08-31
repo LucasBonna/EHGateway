@@ -31,7 +31,6 @@ services:
       - SPRING_JPA_SHOW_SQL=true
     volumes:
       - .:/app
-      - ~/.m1:/root/.m1
     networks:
       - ecomhub_network
 
